@@ -1,0 +1,18 @@
+Using the shunt clipper shown in Example 3, and change the diode connections
+r1 1 2 1k
+* Defining the diode to be used as the default one
+.model diode d()
+* Specifying a default diode p n
+d1 3 2 diode
+*Independent DC Source of 2V
+vdc 3 0 dc 2
+*Independent DC Source whose voltage is to be varied
+vsin 1 0 sin(0 5 1k 0 0)
+* Transient analysis
+.control
+tran 0.02ms 10ms
+* Define plot and output the file
+set hcopydevtype=postscript
+hardcopy Exercise_1_a.ps v(2) v(1)
+.endc
+.end

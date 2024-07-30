@@ -1,0 +1,21 @@
+* Example_1.cir
+* RC Circuit Transient Response
+* Resistor connected between nodes 1 and 2
+r1 1 2 1k
+* Capacitor connected between nodes 2 and 0
+c1 2 0 1u
+* Piecewise linear input voltage
+vin 1 0 pwl (0 0 10ms 0 11ms 5v 20ms 5v)
+* Transient analysis for 20ms, step size 0.02ms
+.tran 0.02ms 20ms
+* Defining the run-time control functions
+.control
+run
+* Set up color for PostScript output
+set hcopydevtype=postscript
+set color1=blue
+set color2=green
+* Plotting input and output voltages
+hardcopy Example_1_Plot_1.ps v(1) v(2)
+.endc
+.end

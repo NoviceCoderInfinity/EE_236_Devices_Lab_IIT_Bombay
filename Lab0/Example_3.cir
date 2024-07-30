@@ -1,0 +1,17 @@
+Shunt Clipper DC Analysis
+r1 1 2 1k
+* Defining the diode to be used as the default one
+.model diode d()
+* Specifying a default diode p n
+d1 2 3 diode
+*Independent DC Source of 2V
+vdc 3 0 dc 2
+*Independent DC Source whose voltage is to be varied
+vin 1 0 dc 0
+* DC Analysis on source vin, to vary from -5V to 5V
+.dc vin -5 5 0.01
+.control
+run
+plot v(2) vs v(1)
+.endc
+.end

@@ -1,0 +1,34 @@
+RC Circuit Transient Analysis using Subcircuits
+
+*INPUT --------------- R1 --------- R2 ------ R3 --------- OUTPUT 
+*      |                        |         |         |      V_out
+*      |                        |         |         |
+*  --------                    __        __        __
+*    V_in                      __        __        __
+*    5 V_(p-p)                 C1       C2         C3
+*    1 kHz                      |         |         |
+*  -------                      |         |         |
+*      |                        |         |         |
+*      -----------------------------------------------
+*                                    |
+*                                  -----
+*                                   ---
+*                                    -
+
+* Defining the Subcircuit RC_Circuit:
+.subckt RC_subcircuit IN OUT COM
+r IN OUT 1K
+c OUT com 1u
+.ends
+* Subcircuit definition ends here
+vsin INPUT gnd sin(0 2.5 1K 0 0)
+* Invoking RC subcircuit with an 'x'
+xrc1 INPUT 1 gnd RC_subcircuit
+xrc2 1 2 gnd RC_subcircuit
+xrc3 2 OUTPUT gnd RC_subcircuit
+.control
+tran 0.02m 40m
+plot v(INPUT)
+plot v(OUTPUT)
+.endc
+.end
