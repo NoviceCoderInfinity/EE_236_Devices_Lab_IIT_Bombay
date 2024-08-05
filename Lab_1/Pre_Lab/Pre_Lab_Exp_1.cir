@@ -1,0 +1,52 @@
+Implement diode circuit and obtain I-V characteristics of a diode (or LED)
+
+.include ../../LED_Didoe_Modelcards/PN_1N4007.txt  
+
+.include ../../LED_Didoe_Modelcards/blue_5mm.txt   
+.include ../../LED_Didoe_Modelcards/white_5mm.txt
+.include ../../LED_Didoe_Modelcards/green_5mm.txt  
+.include ../../LED_Didoe_Modelcards/red_5mm.txt
+
+vs 1 0 dc 0
+
+d1 1 2 BLUE
+r1 2 0 100
+
+d2 1 3 GREEN
+r2 3 0 100
+
+d3 1 4 RED 
+r3 4 0 100
+
+d4 1 5 WHITE
+r4 5 0 100
+
+d5 1 6 1N4007
+r5 6 0 100
+
+.dc vs 0 5 0.01
+.control
+run
+let small_offset = 1e-12
+
+let blue_LED = v(2) / @r1[r]
+let green_LED = v(3) / @r2[r]
+let red_LED = v(4) / @r3[r]
+let white_LED = v(5) / @r4[r]
+let IN4007_LED = v(6) / @r5[r]
+
+let ln_blue_LED = ln(v(2) / @r1[r] + small_offset)
+let ln_green_LED = ln(v(3) / @r2[r] + small_offset)
+let ln_red_LED = ln(v(4) / @r3[r] + small_offset)
+let ln_white_LED = ln(v(5) / @r4[r] + small_offset)
+let ln_IN4007_LED = ln(v(6) / @r5[r] + small_offset)
+
+
+set hcopydevtype=postscript
+hardcopy Id_vs_Vd_Plot.eps blue_LED vs v(1) - v(2)	green_LED vs v(1) - v(3)	red_LED vs v(1) - v(4)	white_LED vs v(1) - v(5)	IN4007_LED vs v(1) - v(6)
+hardcopy ln_Id_vs_Vd_Plot.eps ln_blue_LED vs v(1) - v(2)	ln_green_LED vs v(1) - v(3)	ln_red_LED vs v(1) - v(4)	ln_white_LED vs v(1) - v(5)	ln_IN4007_LED vs v(1) - v(6)	
+
+plot blue_LED vs v(1) - v(2)	green_LED vs v(1) - v(3)	red_LED vs v(1) - v(4)	white_LED vs v(1) - v(5)	IN4007_LED vs v(1) - v(6)
+plot ln_blue_LED vs v(1) - v(2)	ln_green_LED vs v(1) - v(3)	ln_red_LED vs v(1) - v(4)	ln_white_LED vs v(1) - v(5)	ln_IN4007_LED vs v(1) - v(6)
+.endc
+.end

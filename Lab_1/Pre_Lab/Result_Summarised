@@ -1,0 +1,7 @@
+Cut-in Voltages for several LEDs
+
+IN4007 standard LED: 	0.632653 V 	at 	1.56 mA
+Red color LED: 		1.77347 V 	at 	1.5122 mA
+Green color LED: 	1.9102 V 	at 	1.65854 mA
+Blue color LED: 	2.64898 V 	at 	0.00141463 mA
+White color LED: 	2.88571 V 	at 	0.00156098 mA
