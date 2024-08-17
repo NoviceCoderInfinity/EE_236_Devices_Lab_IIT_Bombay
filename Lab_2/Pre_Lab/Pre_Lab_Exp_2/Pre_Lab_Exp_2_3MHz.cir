@@ -1,0 +1,38 @@
+Find the recovery time of the diode RN142 PIN Diode Reverse Recovery Time
+*Anupam Rawat 22b3982
+* [N001] ----- DRN142S ----------------------- [N002]
+*  |          +       -                           |
+*  |                                              |
+*  |                                              |
+*  +                                              |
+*  vs                                             |
+*  -                                           100 ohm
+*  |                                              |
+*  |                                              |
+*  |                                              |
+*  ------------------------------------------------
+*                                                 |
+*	                                       -------
+*			                         ---
+*                                                 -
+
+.include "../../Handouts/rn142 1.txt"
+
+vs N001 0 pulse(0 5 0 1ns 1ns 0.1667us 0.667us)
+d1 N001 N002 DRN142S
+r1 N002 0 100 
+
+.tran 0.1n 2u
+
+.control
+run
+meas tran t_1 when v(N002)=0.00 cross=1
+meas tran t_2 when v(N002)=0.00 cross=2
+meas tran t_3 when v(N002)=0.00 cross=3
+
+let trr = t_3 - t_2
+print trr
+
+plot v(N002) / 100 vs time
+.endc
+.end

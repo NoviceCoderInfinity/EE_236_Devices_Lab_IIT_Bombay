@@ -1,0 +1,33 @@
+Implement diode circuit and obtain I-V characteristics of a diode (or LED) and RN142S
+
+* [N001] --------- DRN142S ---------- [N002]
+*   |                                   |
+*   |                                   |
+*   |                                   |
+*   +                                   |
+*   vs                                  |
+*   -                                   |
+*   |                                   |
+*   |                                   |
+*   |                                   |
+*   -------------------------------------
+*                                       |
+*                                     -------
+*                                       ---
+*                                        -
+
+.include "../../Handouts/rn142 1.txt"
+
+vs N001 0 dc 0
+d1 N001 N002 DRN142S
+r1 N002 0 100
+
+.dc vs 0 5 0.01
+.control
+run
+let RN142_Id = v(N002) / @r1[r]
+
+plot RN142_Id vs v(N001) - v(N002)
+plot ln(RN142_Id + 1e-12) vs v(N001) - v(N002)
+.endc
+.end
