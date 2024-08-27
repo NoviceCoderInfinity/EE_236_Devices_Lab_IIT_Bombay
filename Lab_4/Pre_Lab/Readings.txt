@@ -1,0 +1,17 @@
+Illumination 1:
+	Vmp = 0.2V
+	Imp = -0.00238095mA
+	
+	Isc = -0.00357143mA
+	Voc = 1V
+	
+	FF = 0.133
+
+Illum2:
+	Vmp = 0.2V
+	Imp = -0.002232145mA
+	
+	Isc = -0.00383929mA
+	Voc = 0.440678V
+	
+	FF = 0.264

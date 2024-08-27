@@ -1,0 +1,10 @@
+.inclue "./Illumination1_solar_cell.txt"
+Vs 0 1 dc 0
+r1 2 0 100
+x1 1 2 solar_cell
+.dc Vs -2 2 0.01
+.control
+run
+plot V(2)/100 vs V(1) - V(2), (V(1) - V(2))*V(2)/100  vs V(1) - V(2)
+.endc
+.end
