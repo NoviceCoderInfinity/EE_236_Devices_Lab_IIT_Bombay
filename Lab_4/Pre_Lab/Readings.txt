@@ -1,4 +1,4 @@
-Illumination 1:
+Illumination 1 (Greeen):
 	Vmp = 0.2V
 	Imp = -0.00238095mA
 	
@@ -7,7 +7,7 @@ Illumination 1:
 	
 	FF = 0.133
 
-Illum2:
+Illumination 2 (Blue):
 	Vmp = 0.2V
 	Imp = -0.002232145mA
 	
