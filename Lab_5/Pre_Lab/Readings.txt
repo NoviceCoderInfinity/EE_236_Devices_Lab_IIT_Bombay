@@ -1,0 +1,8 @@
+The FF (Fill Factor) is calculated using the formula: FF = Vm * Im / (Voc * Isc)
+
+Condition      Isc     Voc     Im       Vm      FF
+---------------------------------------------------
+light_35C      0.4mA   0.4V    0.297mA  0.198V  0.371
+light_45C      0.36mA  0.36V   0.297mA  0.198V  0.458
+light_55C      0.33mA  0.33V   0.297mA  0.198V  0.545
+light_65C      0.3mA   0.3V    0.297mA  0.198V  0.660
